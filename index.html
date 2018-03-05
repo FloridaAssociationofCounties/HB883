@@ -21,11 +21,7 @@
   <body>
     <div id="map"></div>
     <script>
-      // This example creates circles on the map, representing populations in North
-      // America.
-
-      // First, create an object containing LatLng and population for each city.
-      var campusmap = {
+      var UCFmap = {
         UCFmain: {
           center: {lat: 28.6024274, lng: -81.2000599},
         },
@@ -51,27 +47,77 @@
           center: {lat: 28.6005338, lng: -81.19772620000003}
         }
       };
+    var UNFmap = {
+      UNFmain: {
+        center: {lat: 30.2661172, lng: -81.51203620000001}
+      },
+      UNFbusiness: {
+        center: {lat: 30.2706682, lng: -81.5104313}
+      },
+      UNFospreycove: {
+        center: {lat: 30.2690957, lng: -81.5072212}
+      },
+      UNFfountainsdorm: {
+        center: {lat: 30.267229, lng: -81.50106949999997}
+      },
+      UNFhodgesstadium: {
+        center: {lat: 30.2751632, lng: -81.51163450000001}
+      },
+      UNFharmonstadium: {
+        center: {lat: 30.2750305, lng: -81.50837890000003}
+      },
+      UNFiptm: {
+        center: {lat: 30.269223, lng: -81.517739}
+      },
+      UNFchallengecourse: {
+        center: {lat: 30.2659834, lng: -81.51185250000003}
+      },
+      UNFuniversitycenter: {
+        center: {lat: 30.26047579140877, lng: -81.50198936462402}
+      },
+      UNFgolfcomplex: {
+        center: {lat: 30.2559191, lng: -81.50356190000002}
+      },
+      UNFparkinglot53: {
+        center: {lat: 30.2625193, lng: -81.49482849999998}
+      },
+      UNFtheflats: {
+        center: {lat: 30.2645494, lng: -81.49367849999999}
+      }
+    };
 
       function initMap() {
         // Create the map.
         var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 13,
+          zoom: 7,
           center: {lat: 28.6024274, lng: -81.2000599},
           mapTypeId: 'terrain'
         });
 
         // Construct the circle for each value in citymap.
-        // Note: We scale the area of the circle based on the population.
-        for (var campus in campusmap) {
+        for (var campus in UCFmap) {
           // Add the circle for this city to the map.
           var cityCircle = new google.maps.Circle({
-            strokeColor: '#333333',
+            strokeColor: '#000000',
             strokeOpacity: 0.8,
             strokeWeight: 2,
             fillColor: '#8a8a42',
             fillOpacity: 0.15,
             map: map,
-            center: campusmap[campus].center,
+            center: UCFmap[campus].center,
+            radius: 4828.03
+          });
+        }
+        for (var campus in UNFmap) {
+          // Add the circle for this city to the map.
+          var cityCircle = new google.maps.Circle({
+            strokeColor: '#003366',
+            strokeOpacity: 0.8,
+            strokeWeight: 2,
+            fillColor: '#c0c0c0',
+            fillOpacity: 0.12,
+            map: map,
+            center: UNFmap[campus].center,
             radius: 4828.03
           });
         }
