@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Circles</title>
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+      // This example creates circles on the map, representing populations in North
+      // America.
+
+      // First, create an object containing LatLng and population for each city.
+      var campusmap = {
+        UCFmain: {
+          center: {lat: 28.6024274, lng: -81.2000599},
+        },
+        UCFbusiness: {
+          center: {lat: 28.6009229, lng: -81.1993359}
+        },
+         UCFnursing: {
+          center: {lat: 28.5878819, lng: -81.1993483}
+        },
+        UCFgradstudies: {
+          center: {lat: 28.5991774, lng: -81.20239240000001}
+        },
+        UCFsciences: {
+          center: {lat: 28.6008171, lng: -81.2003153}
+        },
+        UCFopticsandphotonics: {
+          center: {lat: 28.601259, lng: -81.1971585}
+        },
+        UCFeducation: {
+          center: {lat: 28.5998551, lng: -81.2045731}
+        },
+        UCFengineering: {
+          center: {lat: 28.6005338, lng: -81.19772620000003}
+        }
+      };
+
+      function initMap() {
+        // Create the map.
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 13,
+          center: {lat: 28.6024274, lng: -81.2000599},
+          mapTypeId: 'terrain'
+        });
+
+        // Construct the circle for each value in citymap.
+        // Note: We scale the area of the circle based on the population.
+        for (var campus in campusmap) {
+          // Add the circle for this city to the map.
+          var cityCircle = new google.maps.Circle({
+            strokeColor: '#333333',
+            strokeOpacity: 0.8,
+            strokeWeight: 2,
+            fillColor: '#8a8a42',
+            fillOpacity: 0.15,
+            map: map,
+            center: campusmap[campus].center,
+            radius: 4828.03
+          });
+        }
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCAbSmYeObg3PArhdqxDAHgHzf1-XcJHf4&callback=initMap">
+    </script>
+  </body>
+</html>
