@@ -132,11 +132,34 @@
         center: {lat: 29.651321, lng: -82.3402989}
       }
     };
+    var POLYmap = {
+      POLYmain: {
+        center: {lat: 28.1486516, lng: -81.8480664}
+      },
+      POLYresidence: {
+        center: {lat: 28.1509177, lng: -81.84884360000001}
+      },
+      POLYwellnesscenter: {
+        center: {lat: 28.1494056, lng: -81.8470893}
+      },
+      POLYparkinglot1: {
+        center: {lat: 28.1516376, lng: -81.8503268}
+      },
+      POLYparkinglot2: {
+        center: {lat: 28.1499515, lng: -81.85244019999999}
+      },
+      POLYparkinglot4: {
+        center: {lat: 28.1477308, lng: -81.85171709999997}
+      },
+      POLYparkinglot6: {
+        center: {lat: 28.1461363, lng: -81.85010319999998}
+      }
+    };
 
       function initMap() {
         // Create the map.
         var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 7,
+          zoom: 8,
           center: {lat: 28.6024274, lng: -81.2000599},
           mapTypeId: 'terrain'
         });
@@ -178,6 +201,19 @@
             fillOpacity: 0.12,
             map: map,
             center: UFmap[campus].center,
+            radius: 4828.03
+          });
+        }
+        for (var campus in POLYmap) {
+          // Add the circle for this city to the map.
+          var cityCircle = new google.maps.Circle({
+            strokeColor: 'white',
+            strokeOpacity: 0.8,
+            strokeWeight: 2,
+            fillColor: 'purple',
+            fillOpacity: 0.12,
+            map: map,
+            center: POLYmap[campus].center,
             radius: 4828.03
           });
         }
