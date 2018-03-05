@@ -85,6 +85,53 @@
         center: {lat: 30.2645494, lng: -81.49367849999999}
       }
     };
+    var UFmap = {
+      UFmain: {
+        center: {lat: 29.6436325, lng: -82.35493020000001}
+      },
+      UFveterinary: {
+        center: {lat: 29.6332527, lng: -82.35026010000001}
+      },
+      UFcitra: {
+        center: {lat: 29.4111703, lng: -82.16214660000003}
+      },
+      UFlaw: {
+        center: {lat: 29.6497318, lng: -82.3591207}
+      },
+      UFeducation: {
+        center: {lat: 29.6471676, lng: -82.33789179999997}
+      },
+      UFalumni: {
+        center: {lat: 29.6524876, lng: -82.34904749999998}
+      },
+      UFresearch: {
+        center: {lat: 29.6400842, lng: -82.3443413}
+      },
+      UFeastside: {
+        center: {lat: 29.672042, lng: -82.29948719999999}
+      },
+      UFmedicine: {
+        center: {lat: 29.6401796, lng: -82.34342329999998}
+      },
+      UFbelleglade: {
+        center: {lat: 26.666384, lng: -80.63331199999999}
+      },
+      UFother: {
+        center: {lat: 29.7803203, lng: -82.49408629999999}
+      },
+      UFnursing: {
+        center: {lat: 29.6416764, lng: -82.34524970000001}
+      },
+      UFanother: {
+        center: {lat: 29.7369089, lng: -82.38177689999998}
+      },
+      UFlibraries: {
+        center: {lat: 29.6515513, lng: -82.34281469999996}
+      },
+      UFbusiness: {
+        center: {lat: 29.651321, lng: -82.3402989}
+      }
+    }
 
       function initMap() {
         // Create the map.
@@ -118,6 +165,19 @@
             fillOpacity: 0.12,
             map: map,
             center: UNFmap[campus].center,
+            radius: 4828.03
+          });
+        }
+        for (var campus in UFmap) {
+          // Add the circle for this city to the map.
+          var cityCircle = new google.maps.Circle({
+            strokeColor: 'blue',
+            strokeOpacity: 0.8,
+            strokeWeight: 2,
+            fillColor: 'orange',
+            fillOpacity: 0.12,
+            map: map,
+            center: UFmap[campus].center,
             radius: 4828.03
           });
         }
