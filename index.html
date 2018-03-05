@@ -217,6 +217,83 @@
         center: {lat: 25.770358, lng: -80.36748999999998}
       }
     };
+    var UWFmap = {
+      UWFmain: {
+        center: {lat: 30.5469345, lng: -87.21602180000002}
+      },
+      UWFlote: {
+        center: {lat: 30.544669527649592, lng: -87.22310900688171}
+      },
+      UWFlotf: {
+        center: {lat: 30.549058442641456, lng: -87.22257256507874}
+      },
+      UWFlotg: {
+        center: {lat: 30.550047076111174, lng: -87.22187519073486}
+      },
+      UWFlotgg: {
+        center: {lat: 30.54154634732282, lng: -87.21571683883667}
+      },
+      UWFloth: {
+        center: {lat: 30.54928943267128, lng: -87.2202980518341}
+      },
+      UWFlothc7: {
+        center: {lat: 30.55172865383848, lng: -87.2200083732605}
+      },
+      UWFlothh: {
+        center: {lat: 30.542036083423145, lng: -87.21338868141174}
+      },
+      UWFlotp: {
+        center: {lat: 30.548088278514363, lng: -87.21503019332886}
+      },
+      UWFlotq: {
+        center: {lat: 30.549963920412743, lng: -87.21447229385376}
+      },
+      UWFlots: {
+        center: {lat: 30.55182104737485, lng: -87.21490144729614}
+      },
+      UWFlott: {
+        center: {lat: 30.552190620640886, lng: -87.2155237197876}
+      },
+      UWFlotu: {
+        center: {lat: 30.553160743769414, lng: -87.21657514572144}
+      },
+      UWFlotw: {
+        center: {lat: 30.553890639540867, lng: -87.21719741821289}
+      },
+      UWFlotx: {
+        center: {lat: 30.55474987689598, lng: -87.21755146980286}
+      },
+      UWFloty: {
+        center: {lat: 30.546757751946032, lng: -87.21365690231323}
+      },
+      UWFlotz: {
+        center: {lat: 30.545806044673146, lng: -87.21338868141174}
+      },
+      UWFaquaticcenter: {
+        center: {lat: 30.545575046355278, lng: -87.2219181060791}
+      },
+      UWFhealthleisure: {
+        center: {lat: 30.544632567523045, lng: -87.22155332565308}
+      },
+      UWFheritagehall: {
+        center: {lat: 30.54910464069137, lng: -87.2148585319519}
+      },
+      UWFjimspooner: {
+        center: {lat: 30.542414934183753, lng: -87.20672607421875}
+      },
+      UWFmartinhall: {
+        center: {lat: 30.54730290045335, lng: -87.2138500213623}
+      },
+      UWFpolice: {
+        center: {lat: 30.544604847418896, lng: -87.21242308616638}
+      },
+      UWFmainentrance: {
+        center: {lat: 30.54189747911703, lng: -87.21867799758911}
+      },
+      UWFwestentrance: {
+        center: {lat: 30.5398645932319, lng: -87.19923734664917}
+      }
+    };
 
       function initMap() {
         // Create the map.
@@ -247,7 +324,7 @@
             strokeOpacity: 0.8,
             strokeWeight: 2,
             fillColor: '#c0c0c0',
-            fillOpacity: 0.12,
+            fillOpacity: 0.10,
             map: map,
             center: UNFmap[campus].center,
             radius: 4828.03
@@ -289,6 +366,19 @@
             fillOpacity: 0.08,
             map: map,
             center: FIUmap[campus].center,
+            radius: 4828.03
+          });
+        }
+        for (var campus in UWFmap) {
+          // Add the circle for this city to the map.
+          var cityCircle = new google.maps.Circle({
+            strokeColor: '#0066ff',
+            strokeOpacity: 0.8,
+            strokeWeight: 2,
+            fillColor: '#00cc99',
+            fillOpacity: 0.05,
+            map: map,
+            center: UWFmap[campus].center,
             radius: 4828.03
           });
         }
