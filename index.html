@@ -155,6 +155,68 @@
         center: {lat: 28.1461363, lng: -81.85010319999998}
       }
     };
+    var FIUmap = {
+      FIUmain: {
+        center: {lat: 25.756576, lng: -80.37394899999998}
+      },
+      FIUlaw: {
+        center: {lat: 25.7567687, lng: -80.3779131}
+      },
+      FIUsoccer: {
+        center: {lat: 25.7558275, lng: -80.38107819999999}
+      },
+      FIUfootball: {
+        center: {lat: 25.7525014, lng: -80.37789120000002}
+      },
+      FIUart: {
+        center: {lat: 25.7524798, lng: -80.37265719999999}
+      },
+      FIUbookstore: {
+        center: {lat: 25.7561984, lng: -80.37273749999997}
+      },
+      FIUpublichealthandsocialwork: {
+        center: {lat: 25.7593383, lng: -80.3709766}
+      },
+      FIUnursing: {
+        center: {lat: 25.7588889, lng: -80.371489}
+      },
+      FIUmedicine: {
+        center: {lat: 25.7561984, lng: -80.37273749999997}
+      },
+      FIUcomputerandinformationsciences: {
+        center: {lat: 25.7589968, lng: -80.3738725}
+      },
+      FIUintegratedscienceandhumanity: {
+        center: {lat: 25.7593032, lng: -80.37228349999998}
+      },
+      FIUarchitecture: {
+        center: {lat: 25.7589163, lng: -80.37546989999998}
+      },
+      FIUeducation: {
+        center: {lat: 25.7590757, lng: -80.37678240000002}
+      },
+      FIUbusiness: {
+        center: {lat: 25.7580596, lng: -80.37702200000001}
+      },
+      FIUhurricane: {
+        center: {lat: 25.7544614, lng: -80.3836771}
+      },
+      FIUenglishlanguage: {
+        center: {lat: 25.7565357, lng: -80.37713029999998}
+      },
+      FIUenglish: {
+        center: {lat: 25.7560467, lng: -80.37476099999998}
+      },
+      FIUlakeview: {
+        center: {lat: 25.7540202, lng: -80.374505}
+      },
+      FIUconstruction: {
+        center: {lat: 25.7701224, lng: -80.36776989999998}
+      },
+      FIUdistanceeducation: {
+        center: {lat: 25.770358, lng: -80.36748999999998}
+      }
+    };
 
       function initMap() {
         // Create the map.
@@ -214,6 +276,19 @@
             fillOpacity: 0.12,
             map: map,
             center: POLYmap[campus].center,
+            radius: 4828.03
+          });
+        }
+        for (var campus in FIUmap) {
+          // Add the circle for this city to the map.
+          var cityCircle = new google.maps.Circle({
+            strokeColor: '#b37700',
+            strokeOpacity: 0.8,
+            strokeWeight: 2,
+            fillColor: '#00004d',
+            fillOpacity: 0.08,
+            map: map,
+            center: FIUmap[campus].center,
             radius: 4828.03
           });
         }
