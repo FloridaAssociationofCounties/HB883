@@ -5,12 +5,10 @@
     <meta charset="utf-8">
     <title>Circles</title>
     <style>
-      /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
       #map {
         height: 100%;
       }
-      /* Optional: Makes the sample page fill the window. */
+      /* Makes the sample page fill the window. */
       html, body {
         height: 100%;
         margin: 0;
@@ -298,8 +296,8 @@
       function initMap() {
         // Create the map.
         var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 8,
-          center: {lat: 28.6024274, lng: -81.2000599},
+          zoom: 7,
+          center: {lat: 28, lng: -82},
           mapTypeId: 'terrain'
         });
 
@@ -318,7 +316,7 @@
           });
         }
         for (var campus in UNFmap) {
-          // Add the circle for this city to the map.
+          // Add the circle for this location to the map.
           var cityCircle = new google.maps.Circle({
             strokeColor: '#003366',
             strokeOpacity: 0.8,
@@ -331,7 +329,7 @@
           });
         }
         for (var campus in UFmap) {
-          // Add the circle for this city to the map.
+          // Add the circle for this location to the map.
           var cityCircle = new google.maps.Circle({
             strokeColor: 'blue',
             strokeOpacity: 0.8,
@@ -344,7 +342,7 @@
           });
         }
         for (var campus in POLYmap) {
-          // Add the circle for this city to the map.
+          // Add the circle for this location to the map.
           var cityCircle = new google.maps.Circle({
             strokeColor: 'white',
             strokeOpacity: 0.8,
@@ -370,7 +368,7 @@
           });
         }
         for (var campus in UWFmap) {
-          // Add the circle for this city to the map.
+          // Add the circle for this location to the map.
           var cityCircle = new google.maps.Circle({
             strokeColor: '#0066ff',
             strokeOpacity: 0.8,
