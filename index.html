@@ -335,6 +335,80 @@
         center: {lat: 30.438508330947524, lng: -84.29004907608032}
       }
     };
+    var USFmap = {
+      USFmain: {
+        center: {lat: 28.0587031, lng: -82.41385389999999}
+      },
+      USFlot16: {
+        center: {lat: 28.06872371976866, lng: -82.41112947463989}
+      },
+      USFlot38c: {
+        center: {lat: 28.06863851717007, lng: -82.42555975914001}
+      },
+      USFlot38t: {
+        center: {lat: 28.06861958325011, lng: -82.42166519165039}
+      },
+      USFlot43: {
+        center: {lat: 28.068411309910232, lng: -82.41572141647339}
+      },
+      USFlot45: {
+        center: {lat: 28.056529594239038, lng: -82.40425229072571}
+      },
+      USFlot52: {
+        center: {lat: 28.068269305128837, lng: -82.40559339523315}
+      },
+      USFart: {
+        center: {lat: 28.063554639843957, lng: -82.41559267044067}
+      },
+      USFbaseball: {
+        center: {lat: 28.05870721812464, lng: -82.40454196929932}
+      },
+      USFbookstore: {
+        center: {lat: 28.063497835386677, lng: -82.41252422332764}
+      },
+      USFbotanical: {
+        center: {lat: 28.057779366384462, lng: -82.42398262023926}
+      },
+      USFcatholic: {
+        center: {lat: 28.064454039749723, lng: -82.40130186080933}
+      },
+      USFchapel: {
+        center: {lat: 28.063374758959576, lng: -82.40235328674316}
+      },
+      USFclaw: {
+        center: {lat: 28.074214411417504, lng: -82.40746021270752}
+      },
+      USFconnect: {
+        center: {lat: 28.0557043, lng: -82.4152143}
+      },
+      USFfowler: {
+        center: {lat: 28.05567746853669, lng: -82.40670919418335}
+      },
+      USFmarshall: {
+        center: {lat: 28.063952270204265, lng: -82.41340398788452}
+      },
+      USFpolice: {
+        center: {lat: 28.068439710843993, lng: -82.40865111351013}
+      },
+      USFquestdiagnostics: {
+        center: {lat: 28.069736678819634, lng: -82.42037773132324}
+      },
+      USFrecyclingcenter: {
+        center: {lat: 28.06541023560478, lng: -82.40287899971008}
+      },
+      USFresearchandinnovationpark: {
+        center: {lat: 28.057211289937737, lng: -82.41580724716187}
+      },
+      USFretreat: {
+        center: {lat: 28.05173866641876, lng: -82.4114727973938}
+      },
+      USFsoccer: {
+        center: {lat: 28.060562897577842, lng: -82.40449905395508}
+      },
+      USFsundome: {
+        center: {lat: 28.058991252770504, lng: -82.40651607513428}
+      }
+    };
 
       function initMap() {
         // Create the map.
@@ -433,6 +507,19 @@
             fillOpacity: 0.12,
             map: map,
             center: FSUmap[campus].center,
+            radius: 4828.03
+          });
+        }
+        for (var campus in USFmap) {
+          // Add the circle for this city to the map.
+          var cityCircle = new google.maps.Circle({
+            strokeColor: '#aaaa55',
+            strokeOpacity: 0.8,
+            strokeWeight: 2,
+            fillColor: '#003300',
+            fillOpacity: 0.075,
+            map: map,
+            center: USFmap[campus].center,
             radius: 4828.03
           });
         }
