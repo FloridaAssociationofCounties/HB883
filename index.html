@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Circles</title>
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script src="lib/MeasureTool.js"></script>
+    <script>
+      var UCFmap = {
+        UCFmain: {
+          center: {lat: 28.6024274, lng: -81.2000599},
+        },
+        UCFarboretum: {
+          center: {lat: 28.60069905848912, lng: -81.18984585918577}
+        },
+        UCFbusiness: {
+          center: {lat: 28.6009229, lng: -81.1993359}
+        },
+        UCFemergency: {
+          center: {lat: 28.5923786, lng: -81.196754}
+        },
+        UCFist: {
+          center: {lat: 28.585973, lng: -81.19960909999998}
+        },
+         UCFnursing: {
+          center: {lat: 28.5878819, lng: -81.1993483}
+        },
+        UCFgradstudies: {
+          center: {lat: 28.5991774, lng: -81.20239240000001}
+        },
+        UCFsciences: {
+          center: {lat: 28.6008171, lng: -81.2003153}
+        },
+        UCFopticsandphotonics: {
+          center: {lat: 28.601259, lng: -81.1971585}
+        },
+        UCFeducation: {
+          center: {lat: 28.5998551, lng: -81.2045731}
+        },
+        UCFspectrum: {
+          center: {lat: 28.608222591509477, lng: -81.19263410568237}
+        },
+        UCFengineering: {
+          center: {lat: 28.6005338, lng: -81.19772620000003}
+        }
+      };
+    var UNFmap = {
+      UNFmain: {
+        center: {lat: 30.2661172, lng: -81.51203620000001}
+      },
+      UNFbusiness: {
+        center: {lat: 30.2706682, lng: -81.5104313}
+      },
+      UNFospreycove: {
+        center: {lat: 30.2690957, lng: -81.5072212}
+      },
+      UNFfountainsdorm: {
+        center: {lat: 30.267229, lng: -81.50106949999997}
+      },
+      UNFhodgesstadium: {
+        center: {lat: 30.2751632, lng: -81.51163450000001}
+      },
+      UNFharmonstadium: {
+        center: {lat: 30.2750305, lng: -81.50837890000003}
+      },
+      UNFiptm: {
+        center: {lat: 30.269223, lng: -81.517739}
+      },
+      UNFchallengecourse: {
+        center: {lat: 30.2659834, lng: -81.51185250000003}
+      },
+      UNFuniversitycenter: {
+        center: {lat: 30.26047579140877, lng: -81.50198936462402}
+      },
+      UNFgolfcomplex: {
+        center: {lat: 30.2559191, lng: -81.50356190000002}
+      },
+      UNFparkinglot53: {
+        center: {lat: 30.2625193, lng: -81.49482849999998}
+      },
+      UNFtheflats: {
+        center: {lat: 30.2645494, lng: -81.49367849999999}
+      }
+    };
+    var UFmap = {
+      UFmain: {
+        center: {lat: 29.6436325, lng: -82.35493020000001}
+      },
+      UFveterinary: {
+        center: {lat: 29.6332527, lng: -82.35026010000001}
+      },
+      UFcitra: {
+        center: {lat: 29.4111703, lng: -82.16214660000003}
+      },
+      UFlaw: {
+        center: {lat: 29.6497318, lng: -82.3591207}
+      },
+      UFeducation: {
+        center: {lat: 29.6471676, lng: -82.33789179999997}
+      },
+      UFalumni: {
+        center: {lat: 29.6524876, lng: -82.34904749999998}
+      },
+      UFresearch: {
+        center: {lat: 29.6400842, lng: -82.3443413}
+      },
+      UFeastside: {
+        center: {lat: 29.672042, lng: -82.29948719999999}
+      },
+      UFmedicine: {
+        center: {lat: 29.6401796, lng: -82.34342329999998}
+      },
+      UFbelleglade: {
+        center: {lat: 26.666384, lng: -80.63331199999999}
+      },
+      UFother: {
+        center: {lat: 29.7803203, lng: -82.49408629999999}
+      },
+      UFnursing: {
+        center: {lat: 29.6416764, lng: -82.34524970000001}
+      },
+      UFanother: {
+        center: {lat: 29.7369089, lng: -82.38177689999998}
+      },
+      UFlibraries: {
+        center: {lat: 29.6515513, lng: -82.34281469999996}
+      },
+      UFbusiness: {
+        center: {lat: 29.651321, lng: -82.3402989}
+      }
+    };
+    var POLYmap = {
+      POLYmain: {
+        center: {lat: 28.1486516, lng: -81.8480664}
+      },
+      POLYresidence: {
+        center: {lat: 28.1509177, lng: -81.84884360000001}
+      },
+      POLYwellnesscenter: {
+        center: {lat: 28.1494056, lng: -81.8470893}
+      },
+      POLYparkinglot1: {
+        center: {lat: 28.1516376, lng: -81.8503268}
+      },
+      POLYparkinglot2: {
+        center: {lat: 28.1499515, lng: -81.85244019999999}
+      },
+      POLYparkinglot4: {
+        center: {lat: 28.1477308, lng: -81.85171709999997}
+      },
+      POLYparkinglot6: {
+        center: {lat: 28.1461363, lng: -81.85010319999998}
+      }
+    };
+    var FIUmap = {
+      FIUmain: {
+        center: {lat: 25.756576, lng: -80.37394899999998}
+      },
+      FIUlaw: {
+        center: {lat: 25.7567687, lng: -80.3779131}
+      },
+      FIUsoccer: {
+        center: {lat: 25.7558275, lng: -80.38107819999999}
+      },
+      FIUfootball: {
+        center: {lat: 25.7525014, lng: -80.37789120000002}
+      },
+      FIUart: {
+        center: {lat: 25.7524798, lng: -80.37265719999999}
+      },
+      FIUbookstore: {
+        center: {lat: 25.7561984, lng: -80.37273749999997}
+      },
+      FIUpublichealthandsocialwork: {
+        center: {lat: 25.7593383, lng: -80.3709766}
+      },
+      FIUnursing: {
+        center: {lat: 25.7588889, lng: -80.371489}
+      },
+      FIUmedicine: {
+        center: {lat: 25.7561984, lng: -80.37273749999997}
+      },
+      FIUcomputerandinformationsciences: {
+        center: {lat: 25.7589968, lng: -80.3738725}
+      },
+      FIUintegratedscienceandhumanity: {
+        center: {lat: 25.7593032, lng: -80.37228349999998}
+      },
+      FIUarchitecture: {
+        center: {lat: 25.7589163, lng: -80.37546989999998}
+      },
+      FIUeducation: {
+        center: {lat: 25.7590757, lng: -80.37678240000002}
+      },
+      FIUbusiness: {
+        center: {lat: 25.7580596, lng: -80.37702200000001}
+      },
+      FIUhurricane: {
+        center: {lat: 25.7544614, lng: -80.3836771}
+      },
+      FIUenglishlanguage: {
+        center: {lat: 25.7565357, lng: -80.37713029999998}
+      },
+      FIUenglish: {
+        center: {lat: 25.7560467, lng: -80.37476099999998}
+      },
+      FIUlakeview: {
+        center: {lat: 25.7540202, lng: -80.374505}
+      },
+      FIUconstruction: {
+        center: {lat: 25.7701224, lng: -80.36776989999998}
+      },
+      FIUdistanceeducation: {
+        center: {lat: 25.770358, lng: -80.36748999999998}
+      }
+    };
+    var UWFmap = {
+      UWFmain: {
+        center: {lat: 30.5469345, lng: -87.21602180000002}
+      },
+      UWFlote: {
+        center: {lat: 30.544669527649592, lng: -87.22310900688171}
+      },
+      UWFlotf: {
+        center: {lat: 30.549058442641456, lng: -87.22257256507874}
+      },
+      UWFlotg: {
+        center: {lat: 30.550047076111174, lng: -87.22187519073486}
+      },
+      UWFlotgg: {
+        center: {lat: 30.54154634732282, lng: -87.21571683883667}
+      },
+      UWFloth: {
+        center: {lat: 30.54928943267128, lng: -87.2202980518341}
+      },
+      UWFlothc7: {
+        center: {lat: 30.55172865383848, lng: -87.2200083732605}
+      },
+      UWFlothh: {
+        center: {lat: 30.542036083423145, lng: -87.21338868141174}
+      },
+      UWFlotp: {
+        center: {lat: 30.548088278514363, lng: -87.21503019332886}
+      },
+      UWFlotq: {
+        center: {lat: 30.549963920412743, lng: -87.21447229385376}
+      },
+      UWFlots: {
+        center: {lat: 30.55182104737485, lng: -87.21490144729614}
+      },
+      UWFlott: {
+        center: {lat: 30.552190620640886, lng: -87.2155237197876}
+      },
+      UWFlotu: {
+        center: {lat: 30.553160743769414, lng: -87.21657514572144}
+      },
+      UWFlotw: {
+        center: {lat: 30.553890639540867, lng: -87.21719741821289}
+      },
+      UWFlotx: {
+        center: {lat: 30.55474987689598, lng: -87.21755146980286}
+      },
+      UWFloty: {
+        center: {lat: 30.546757751946032, lng: -87.21365690231323}
+      },
+      UWFlotz: {
+        center: {lat: 30.545806044673146, lng: -87.21338868141174}
+      },
+      UWFaquaticcenter: {
+        center: {lat: 30.545575046355278, lng: -87.2219181060791}
+      },
+      UWFhealthleisure: {
+        center: {lat: 30.544632567523045, lng: -87.22155332565308}
+      },
+      UWFheritagehall: {
+        center: {lat: 30.54910464069137, lng: -87.2148585319519}
+      },
+      UWFjimspooner: {
+        center: {lat: 30.542414934183753, lng: -87.20672607421875}
+      },
+      UWFmartinhall: {
+        center: {lat: 30.54730290045335, lng: -87.2138500213623}
+      },
+      UWFpolice: {
+        center: {lat: 30.544604847418896, lng: -87.21242308616638}
+      },
+      UWFmainentrance: {
+        center: {lat: 30.54189747911703, lng: -87.21867799758911}
+      },
+      UWFwestentrance: {
+        center: {lat: 30.5398645932319, lng: -87.19923734664917}
+      }
+    };
+    var FSUmap = {
+      FSUmain: {
+        center: {lat: 30.4407247, lng: -84.29190399999999}
+      },
+      FSUarts: {
+        center: {lat: 30.4443079816539, lng: -84.28998470306396}
+      },
+      FSUbusiness: {
+        center: {lat: 30.444157, lng: -84.29544799999996}
+      },
+      FSUdoak: {
+        center: {lat: 30.438166076027205, lng: -84.30442571640015}
+      },
+      FSUengineering: {
+        center: {lat: 30.420256142845158, lng: -84.31796550750732}
+      },
+      FSUgolf: {
+        center: {lat: 30.412797061792308, lng: -84.32822227478027}
+      },
+      FSUlaw: {
+        center: {lat: 30.439100336622218, lng: -84.28681969642639}
+      },
+      FSUmedicine: {
+        center: {lat: 30.4455474, lng: -84.30558440000004}
+      },
+      FSUmusic: {
+        center: {lat: 30.4418528, lng: -84.2920628}
+      },
+      FSUoglesby: {
+        center: {lat: 30.4445401, lng: -84.29712599999999}
+      },
+      FSUpsychology: {
+        center: {lat: 30.4452925, lng: -84.3041321}
+      },
+      FSUrecsportsplex: {
+        center: {lat: 30.42401051412083, lng: -84.34401512145996}
+      },
+      FSUturnbull: {
+        center: {lat: 30.438508330947524, lng: -84.29004907608032}
+      }
+    };
+    var USFmap = {
+      USFmain: {
+        center: {lat: 28.0587031, lng: -82.41385389999999}
+      },
+      USFlot16: {
+        center: {lat: 28.06872371976866, lng: -82.41112947463989}
+      },
+      USFlot38c: {
+        center: {lat: 28.06863851717007, lng: -82.42555975914001}
+      },
+      USFlot38t: {
+        center: {lat: 28.06861958325011, lng: -82.42166519165039}
+      },
+      USFlot43: {
+        center: {lat: 28.068411309910232, lng: -82.41572141647339}
+      },
+      USFlot45: {
+        center: {lat: 28.056529594239038, lng: -82.40425229072571}
+      },
+      USFlot52: {
+        center: {lat: 28.068269305128837, lng: -82.40559339523315}
+      },
+      USFart: {
+        center: {lat: 28.063554639843957, lng: -82.41559267044067}
+      },
+      USFbaseball: {
+        center: {lat: 28.05870721812464, lng: -82.40454196929932}
+      },
+      USFbookstore: {
+        center: {lat: 28.063497835386677, lng: -82.41252422332764}
+      },
+      USFbotanical: {
+        center: {lat: 28.057779366384462, lng: -82.42398262023926}
+      },
+      USFcatholic: {
+        center: {lat: 28.064454039749723, lng: -82.40130186080933}
+      },
+      USFchapel: {
+        center: {lat: 28.063374758959576, lng: -82.40235328674316}
+      },
+      USFclaw: {
+        center: {lat: 28.074214411417504, lng: -82.40746021270752}
+      },
+      USFconnect: {
+        center: {lat: 28.0557043, lng: -82.4152143}
+      },
+      USFfowler: {
+        center: {lat: 28.05567746853669, lng: -82.40670919418335}
+      },
+      USFmarshall: {
+        center: {lat: 28.063952270204265, lng: -82.41340398788452}
+      },
+      USFpolice: {
+        center: {lat: 28.068439710843993, lng: -82.40865111351013}
+      },
+      USFquestdiagnostics: {
+        center: {lat: 28.069736678819634, lng: -82.42037773132324}
+      },
+      USFrecyclingcenter: {
+        center: {lat: 28.06541023560478, lng: -82.40287899971008}
+      },
+      USFresearchandinnovationpark: {
+        center: {lat: 28.057211289937737, lng: -82.41580724716187}
+      },
+      USFretreat: {
+        center: {lat: 28.05173866641876, lng: -82.4114727973938}
+      },
+      USFsoccer: {
+        center: {lat: 28.060562897577842, lng: -82.40449905395508}
+      },
+      USFsundome: {
+        center: {lat: 28.058991252770504, lng: -82.40651607513428}
+      }
+    };
+
+      function initMap() {
+        // Create the map.
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 7,
+          center: {lat: 28, lng: -82},
+          mapTypeId: 'terrain'
+        });
+
+        // Construct the circle for each value in citymap.
+        for (var campus in UCFmap) {
+          // Add the circle for this city to the map.
+          var cityCircle = new google.maps.Circle({
+            strokeColor: '#000000',
+            strokeOpacity: 0.8,
+            strokeWeight: 2,
+            fillColor: '#8a8a42',
+            fillOpacity: 0.15,
+            map: map,
+            center: UCFmap[campus].center,
+            radius: 4828.03
+          });
+        }
+        for (var campus in UNFmap) {
+          // Add the circle for this city to the map.
+          var cityCircle = new google.maps.Circle({
+            strokeColor: '#003366',
+            strokeOpacity: 0.8,
+            strokeWeight: 2,
+            fillColor: '#c0c0c0',
+            fillOpacity: 0.10,
+            map: map,
+            center: UNFmap[campus].center,
+            radius: 4828.03
+          });
+        }
+        for (var campus in UFmap) {
+          // Add the circle for this city to the map.
+          var cityCircle = new google.maps.Circle({
+            strokeColor: 'blue',
+            strokeOpacity: 0.8,
+            strokeWeight: 2,
+            fillColor: 'orange',
+            fillOpacity: 0.12,
+            map: map,
+            center: UFmap[campus].center,
+            radius: 4828.03
+          });
+        }
+        for (var campus in POLYmap) {
+          // Add the circle for this city to the map.
+          var cityCircle = new google.maps.Circle({
+            strokeColor: 'white',
+            strokeOpacity: 0.8,
+            strokeWeight: 2,
+            fillColor: 'purple',
+            fillOpacity: 0.12,
+            map: map,
+            center: POLYmap[campus].center,
+            radius: 4828.03
+          });
+        }
+        for (var campus in FIUmap) {
+          // Add the circle for this city to the map.
+          var cityCircle = new google.maps.Circle({
+            strokeColor: '#b37700',
+            strokeOpacity: 0.8,
+            strokeWeight: 2,
+            fillColor: '#00004d',
+            fillOpacity: 0.08,
+            map: map,
+            center: FIUmap[campus].center,
+            radius: 4828.03
+          });
+        }
+        for (var campus in UWFmap) {
+          // Add the circle for this city to the map.
+          var cityCircle = new google.maps.Circle({
+            strokeColor: '#0066ff',
+            strokeOpacity: 0.8,
+            strokeWeight: 2,
+            fillColor: '#00cc99',
+            fillOpacity: 0.05,
+            map: map,
+            center: UWFmap[campus].center,
+            radius: 4828.03
+          });
+        }
+        for (var campus in FSUmap) {
+          // Add the circle for this city to the map.
+          var cityCircle = new google.maps.Circle({
+            strokeColor: '#ccad00',
+            strokeOpacity: 0.8,
+            strokeWeight: 2,
+            fillColor: '#722F37',
+            fillOpacity: 0.12,
+            map: map,
+            center: FSUmap[campus].center,
+            radius: 4828.03
+          });
+        }
+        for (var campus in USFmap) {
+          // Add the circle for this city to the map.
+          var cityCircle = new google.maps.Circle({
+            strokeColor: '#aaaa55',
+            strokeOpacity: 0.8,
+            strokeWeight: 2,
+            fillColor: '#003300',
+            fillOpacity: 0.075,
+            map: map,
+            center: USFmap[campus].center,
+            radius: 4828.03
+          });
+        }
+        measureTool = new MeasureTool(map, {
+          showSegmentLength: true,
+          tooltip: true,
+          unit: MeasureTool.UnitTypeId.IMPERIAL
+        });
+        measureTool.setOption('unit', MeasureTool.UnitTypeId.METRIC);
+        measureTool.addListener('measure_start', () => {
+          console.log('started');
+        });
+        measureTool.addListener('measure_end', (e) => {
+          console.log('ended', e.result);
+        });
+        measureTool.addListener('measure_change', (e) => {
+          console.log('changed', e.result);
+        });
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCAbSmYeObg3PArhdqxDAHgHzf1-XcJHf4&callback=initMap&libraries=geometry&callback=initMap">
+    </script>
+  </body>
+</html>
